@@ -1,8 +1,8 @@
 //Global variables
 
-import { WORDS } from "./words.js";//Getting words from external file
+import { WORDS } from "./6words.js";//Getting words from external file
 
-const NUMBER_OF_GUESSES = 6;
+const NUMBER_OF_GUESSES = 7;//-----
 let guessesRemaining = NUMBER_OF_GUESSES;
 let currentGuess = [];//stack data structure
 let nextLetter = 0;
@@ -16,9 +16,9 @@ for (let i = 0; i < NUMBER_OF_GUESSES; i++) {
     let row = document.createElement("div")
     row.className = "letter-row"//creating a row element for each guess
         
-    for (let j = 0; j < 5; j++) {
+    for (let j = 0; j < 6; j++) {
         let box = document.createElement("div")
-        box.className = "letter-box"//creating a box element for each letter of guess(5)
+        box.className = "letter-box"//creating a box element for each letter of guess(6)
         row.appendChild(box)//adding each box as a child of the row class
     }
 
@@ -45,12 +45,12 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
 
 //Inserting user input
 function insertLetter (pressedKey) {
-    if (nextLetter === 5) {//first checking if last letter has been entered
+    if (nextLetter === 6) {//first checking if last letter has been entered
         return
     }
     pressedKey = pressedKey.toLowerCase()
 
-    let row = document.getElementsByClassName("letter-row")[6 - guessesRemaining]//getting the row of the place where letter should be placed
+    let row = document.getElementsByClassName("letter-row")[7 - guessesRemaining]//getting the row of the place where letter should be placed
     let box = row.children[nextLetter]//getting box number of inputted letter
     box.textContent = pressedKey//Displaying text content
     animateCSS(box, "pulse")//animating letter input
@@ -62,7 +62,7 @@ function insertLetter (pressedKey) {
 
 //Letter deleting function called when backspace is clicked
 function deleteLetter () {
-    let row = document.getElementsByClassName("letter-row")[6 - guessesRemaining]//Getting row of deleted letter
+    let row = document.getElementsByClassName("letter-row")[7 - guessesRemaining]//Getting row of deleted letter
     let box = row.children[nextLetter - 1]
     box.textContent = ""//reseting the content in that box
     box.classList.remove("filled-box")//removing filled status of the box
@@ -93,7 +93,7 @@ function shadeKeyBoard(letter, color) {
 
 
 function checkGuess () {
-    let row = document.getElementsByClassName("letter-row")[6 - guessesRemaining]
+    let row = document.getElementsByClassName("letter-row")[7 - guessesRemaining]
     let guessString = ''
     let rightGuess = Array.from(rightGuessString)//Converting the right answer into an array of letters
 
@@ -101,7 +101,7 @@ function checkGuess () {
         guessString += val
     }//shifting the value of current guess to a temporary variable guessstring
 
-    if (guessString.length != 5) {
+    if (guessString.length != 6) {
         toastr.error("Not enough letters!")//Give error message for not enough letters
         return
     }
@@ -111,7 +111,7 @@ function checkGuess () {
         return
     }
 
-    for (let i = 0; i < 5; i++) {//looping through each letter
+    for (let i = 0; i < 6; i++) {//looping through each letter
         let letterColor = ''//color value
         let box = row.children[i]//box's index
         let letter = currentGuess[i]//checking each letter of current guess

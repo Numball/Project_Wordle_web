@@ -13,7 +13,12 @@
   /><!-- CSS animation extension-->
 </head> <!-- Boiler plate code-->
 <body>
-    <h1> Wordle </h1>
+    <h1>5 Letter Wordle </h1>
+    <div id="other">
+        <button onclick="window.location.href='4letter.html';">4 Letter Wordle</button>
+        <button onclick="window.location.href='6letter.html';">6 Letter Wordle</button>
+        <button onclick="window.location.href='7letter.html';">7 Letter Wordle</button>    
+    </div>
     
     <div id="game-board"><!-- game board division(the main gamepad), tiles can be added with js code-->
     </div>
@@ -58,6 +63,6 @@ src="https://code.jquery.com/jquery-3.6.0.min.js"
 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-<script src="script.js" type="module"></script><!-- linking js script-->
+<script src="5script.js" type="module"></script><!-- linking js script-->
 </body>
 </html>
